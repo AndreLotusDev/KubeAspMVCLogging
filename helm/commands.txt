@@ -1,0 +1,11 @@
+docker login
+
+docker build -f TempMVC/Dockerfile -t _IMAGE_:latest .
+
+docker push _USER_/_IMAGE_
+
+kubectl apply -f aspmvclogging-deploy.yml
+
+kubectl apply -f aspmvclogging-service.yml
+
+kubectl port-forward service/aspmvclogging 7080:8080
